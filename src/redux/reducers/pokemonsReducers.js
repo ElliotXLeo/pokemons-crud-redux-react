@@ -1,7 +1,8 @@
-import { CREATE_POKEMON, CREATE_POKEMON_SUCCESS } from "../types/indexTypes";
+import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS } from "../types/indexTypes";
 
 const initialState = {
   loading: false,
+  error: false,
   pokemons: []
 };
 
@@ -18,6 +19,12 @@ const pokemonsReducers = (state = initialState, action) => {
         ...state,
         loading: false,
         pokemons: [...state.pokemons, payload]
+      }
+    case CREATE_POKEMON_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: payload
       }
     default:
       return state;
