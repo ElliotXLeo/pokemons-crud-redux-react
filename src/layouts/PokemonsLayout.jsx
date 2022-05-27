@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Header from "../component/sections/Header";
+import Header from "../components/sections/Header";
 
 const PokemonsLayout = () => {
 
