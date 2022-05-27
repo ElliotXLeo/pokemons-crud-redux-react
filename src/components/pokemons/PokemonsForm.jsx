@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from 'react-redux';
-import { createPokemonAction } from '../../redux/actions/pokemonsActions';
+import { createPokemonSuccessAction } from '../../redux/actions/pokemonsActions';
 
 const PokemonsForm = () => {
 
@@ -26,7 +26,7 @@ const PokemonsForm = () => {
       })}
       onSubmit={(values, actions) => {
         console.log(values);
-        dispatch(createPokemonAction(values));
+        dispatch(createPokemonSuccessAction(values));
         actions.setSubmitting(false);
         actions.resetForm();
       }}

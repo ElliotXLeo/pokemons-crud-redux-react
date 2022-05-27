@@ -1,6 +1,10 @@
-import { CREATE_POKEMON } from "../types/indexTypes";
+import { CREATE_POKEMON, CREATE_POKEMON_SUCCESS } from "../types/indexTypes";
 
-export const createPokemonAction = (pokemon) => ({
-  type: CREATE_POKEMON,
+export const createPokemonAction = () => ({
+  type: CREATE_POKEMON
+});
+
+export const createPokemonSuccessAction = (pokemon) => ({
+  type: CREATE_POKEMON_SUCCESS,
   payload: pokemon
 });
