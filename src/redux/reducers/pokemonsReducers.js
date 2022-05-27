@@ -7,6 +7,7 @@ const initialState = {
 const pokemonsReducers = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_POKEMON:
+      console.log(action.payload);
       return {
         ...state,
         loading: true
