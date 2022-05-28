@@ -34,8 +34,10 @@ export const createPokemon = (pokemon) => {
       const { data } = await axiosInstance(options);
       dispatch(createPokemonSuccessAction(data));
     } catch (error) {
-      console.log(error);
-      dispatch(createPokemonErrorAction(true));
+      dispatch(createPokemonErrorAction(error));
+      setTimeout(() => {
+        dispatch(createPokemonErrorAction({}));
+      }, 5000);
     }
   });
 };

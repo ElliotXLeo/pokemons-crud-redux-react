@@ -2,7 +2,7 @@ import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS } from "..
 
 const initialState = {
   loading: false,
-  error: false,
+  error: {},
   pokemons: []
 };
 
@@ -18,6 +18,7 @@ const pokemonsReducers = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+        error: {},
         pokemons: [...state.pokemons, payload]
       }
     case CREATE_POKEMON_ERROR:

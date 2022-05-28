@@ -27,7 +27,6 @@ const PokemonsForm = () => {
         special: yup.string().required('El especial es requerido')
       })}
       onSubmit={async (values, actions) => {
-        console.log(values);
         await dispatch(createPokemon(values));
         actions.setSubmitting(false);
         actions.resetForm();
