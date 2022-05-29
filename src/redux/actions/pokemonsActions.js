@@ -3,7 +3,8 @@ import { showToast } from "../../utils/sweetalert";
 import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS } from "../types/indexTypes";
 
 const createPokemonAction = () => ({
-  type: CREATE_POKEMON
+  type: CREATE_POKEMON,
+  payload: true
 });
 
 const createPokemonSuccessAction = (pokemon) => ({
@@ -46,7 +47,8 @@ export const createPokemon = (pokemon) => {
 };
 
 const readPokemonsAction = () => ({
-  type: READ_POKEMONS
+  type: READ_POKEMONS,
+  payload: true
 });
 
 const readPokemonsSuccessAction = (pokemons) => ({

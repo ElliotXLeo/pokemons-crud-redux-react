@@ -12,7 +12,7 @@ const pokemonsReducers = (state = initialState, action) => {
     case CREATE_POKEMON:
       return {
         ...state,
-        loading: true
+        loading: payload
       };
     case CREATE_POKEMON_SUCCESS:
       return {
@@ -30,7 +30,7 @@ const pokemonsReducers = (state = initialState, action) => {
     case READ_POKEMONS:
       return {
         ...state,
-        loading: true
+        loading: payload
       };
     case READ_POKEMONS_SUCCESS:
       return {
