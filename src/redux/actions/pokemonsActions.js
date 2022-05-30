@@ -122,9 +122,9 @@ const updatePokemonAction = () => ({
   payload: true
 });
 
-const updatePokemonSuccessAction = (pokemons) => ({
+const updatePokemonSuccessAction = (pokemon) => ({
   type: UPDATE_POKEMON_SUCCESS,
-  payload: pokemons
+  payload: pokemon
 });
 
 const updatePokemonErrorAction = (error) => ({
