@@ -1,6 +1,6 @@
 import axiosInstance from "../../config/axiosInstance";
 import { showToast } from "../../utils/sweetalert";
-import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS } from "../types/indexTypes";
+import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, READ_POKEMON, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS, READ_POKEMON_ERROR, READ_POKEMON_SUCCESS } from "../types/indexTypes";
 
 const createPokemonAction = () => ({
   type: CREATE_POKEMON,
@@ -76,6 +76,42 @@ export const readPokemons = () => {
       dispatch(readPokemonsErrorAction(error));
       setTimeout(() => {
         dispatch(readPokemonsErrorAction({}));
+      }, 5000);
+    }
+  });
+};
+
+const readPokemonAction = () => ({
+  type: READ_POKEMON,
+  payload: true
+});
+
+const readPokemonSuccessAction = (pokemons) => ({
+  type: READ_POKEMON_SUCCESS,
+  payload: pokemons
+});
+
+const readPokemonErrorAction = (error) => ({
+  type: READ_POKEMON_ERROR,
+  payload: error
+});
+
+export const readPokemon = (_id) => {
+  return (async (dispatch) => {
+    dispatch(readPokemonAction());
+    try {
+      const options = {
+        method: 'GET',
+        url: `/pokemons/${_id}`
+      };
+      const { data } = await axiosInstance(options);
+      dispatch(readPokemonSuccessAction(data));
+      showToast('📚', 'Leído');
+    } catch (error) {
+      showToast('error', 'Error');
+      dispatch(readPokemonErrorAction(error));
+      setTimeout(() => {
+        dispatch(readPokemonErrorAction({}));
       }, 5000);
     }
   });
