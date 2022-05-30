@@ -24,7 +24,7 @@ const PokemonsLayout = () => {
       <Header
         applicationName={applicationName}
       />
-      <main className="text-center pt-16 pb-8">
+      <main className="pt-16 pb-8">
         {error.message && <Alert error={error} />}
         <Outlet />
       </main>
