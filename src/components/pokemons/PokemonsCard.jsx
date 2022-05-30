@@ -31,6 +31,6 @@ const PokemonsCard = ({ pokemon }) => {
       </div>
     </div>
   );
-}
+};
 
 export default PokemonsCard;

@@ -33,6 +33,6 @@ const PokemonsLayout = () => {
       </footer>
     </>
   );
-}
+};
 
 export default PokemonsLayout;

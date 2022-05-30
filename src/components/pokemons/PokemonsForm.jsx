@@ -90,6 +90,6 @@ const PokemonsForm = () => {
       }}
     </Formik>
   );
-}
+};
 
 export default PokemonsForm;
