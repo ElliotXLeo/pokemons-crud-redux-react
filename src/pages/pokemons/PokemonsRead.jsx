@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import PokemonsCard from "../../components/pokemons/PokemonsCard";
 
 const PokemonsRead = () => {

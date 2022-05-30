@@ -56,7 +56,7 @@ const pokemonsReducers = (state = initialState, action) => {
         ...state,
         loading: false,
         error: {},
-        pokemons: payload
+        pokemon: payload
       };
     case READ_POKEMON_ERROR:
       return {

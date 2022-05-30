@@ -86,9 +86,9 @@ const readPokemonAction = () => ({
   payload: true
 });
 
-const readPokemonSuccessAction = (pokemons) => ({
+const readPokemonSuccessAction = (pokemon) => ({
   type: READ_POKEMON_SUCCESS,
-  payload: pokemons
+  payload: pokemon
 });
 
 const readPokemonErrorAction = (error) => ({
@@ -106,7 +106,7 @@ export const readPokemon = (_id) => {
       };
       const { data } = await axiosInstance(options);
       dispatch(readPokemonSuccessAction(data));
-      showToast('📚', 'Leído');
+      showToast('info', 'Leído');
     } catch (error) {
       showToast('error', 'Error');
       dispatch(readPokemonErrorAction(error));
