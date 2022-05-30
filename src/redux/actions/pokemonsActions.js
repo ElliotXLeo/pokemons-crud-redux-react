@@ -1,6 +1,6 @@
 import axiosInstance from "../../config/axiosInstance";
 import { showToast } from "../../utils/sweetalert";
-import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, READ_POKEMON, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS, READ_POKEMON_ERROR, READ_POKEMON_SUCCESS, UPDATE_POKEMON, UPDATE_POKEMON_ERROR, UPDATE_POKEMON_SUCCESS } from "../types/indexTypes";
+import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, DELETE_POKEMON, DELETE_POKEMON_ERROR, DELETE_POKEMON_SUCCESS, READ_POKEMON, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS, READ_POKEMON_ERROR, READ_POKEMON_SUCCESS, UPDATE_POKEMON, UPDATE_POKEMON_ERROR, UPDATE_POKEMON_SUCCESS } from "../types/indexTypes";
 
 const createPokemonAction = () => ({
   type: CREATE_POKEMON,
@@ -156,6 +156,42 @@ const updatePokemon = (pokemon) => {
       dispatch(updatePokemonErrorAction(error));
       setTimeout(() => {
         dispatch(updatePokemonErrorAction({}));
+      }, 5000);
+    }
+  });
+};
+
+const deletePokemonAction = () => ({
+  type: DELETE_POKEMON,
+  payload: true
+});
+
+const deletePokemonSuccessAction = (_id) => ({
+  type: DELETE_POKEMON_SUCCESS,
+  payload: _id
+});
+
+const deletePokemonErrorAction = (error) => ({
+  type: DELETE_POKEMON_ERROR,
+  payload: error
+});
+
+export const deletePokemon = (_id) => {
+  return (async (dispatch) => {
+    dispatch(deletePokemonAction());
+    try {
+      const options = {
+        method: 'DELETE',
+        url: `/pokemons/${_id}`
+      };
+      const { data } = await axiosInstance(options);
+      dispatch(deletePokemonSuccessAction(_id));
+      showToast('error', data.message);
+    } catch (error) {
+      showToast('error', 'Error');
+      dispatch(deletePokemonErrorAction(error));
+      setTimeout(() => {
+        dispatch(deletePokemonErrorAction({}));
       }, 5000);
     }
   });
