@@ -1,6 +1,6 @@
 import axiosInstance from "../../config/axiosInstance";
 import { showToast } from "../../utils/sweetalert";
-import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, READ_POKEMON, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS, READ_POKEMON_ERROR, READ_POKEMON_SUCCESS } from "../types/indexTypes";
+import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, READ_POKEMON, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS, READ_POKEMON_ERROR, READ_POKEMON_SUCCESS, UPDATE_POKEMON, UPDATE_POKEMON_ERROR, UPDATE_POKEMON_SUCCESS } from "../types/indexTypes";
 
 const createPokemonAction = () => ({
   type: CREATE_POKEMON,
@@ -22,7 +22,7 @@ export const createPokemon = (pokemon) => {
     dispatch(createPokemonAction());
     try {
       const form = new FormData();
-      for (let key in pokemon) {
+      for (const key in pokemon) {
         form.append(key, pokemon[key]);
       }
       const options = {
@@ -112,6 +112,50 @@ export const readPokemon = (_id) => {
       dispatch(readPokemonErrorAction(error));
       setTimeout(() => {
         dispatch(readPokemonErrorAction({}));
+      }, 5000);
+    }
+  });
+};
+
+const updatePokemonAction = () => ({
+  type: UPDATE_POKEMON,
+  payload: true
+});
+
+const updatePokemonSuccessAction = (pokemons) => ({
+  type: UPDATE_POKEMON_SUCCESS,
+  payload: pokemons
+});
+
+const updatePokemonErrorAction = (error) => ({
+  type: UPDATE_POKEMON_ERROR,
+  payload: error
+});
+
+export const updatePokemon = (pokemon) => {
+  return (async (dispatch) => {
+    dispatch(updatePokemonAction());
+    try {
+      const form = new FormData();
+      for (const key in pokemon) {
+        form.append(key, pokemon[key]);
+      }
+      const options = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        data: form,
+        url: `/pokemons/${pokemon._id}`
+      };
+      const { data } = await axiosInstance(options);
+      dispatch(updatePokemonSuccessAction(data));
+      showToast('warning', 'Actualizado');
+    } catch (error) {
+      showToast('error', 'Error');
+      dispatch(updatePokemonErrorAction(error));
+      setTimeout(() => {
+        dispatch(updatePokemonErrorAction({}));
       }, 5000);
     }
   });
