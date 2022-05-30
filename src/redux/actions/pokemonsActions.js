@@ -17,7 +17,7 @@ const createPokemonErrorAction = (error) => ({
   payload: error
 });
 
-export const createPokemon = (pokemon) => {
+const createPokemon = (pokemon) => {
   return (async (dispatch) => {
     dispatch(createPokemonAction());
     try {
@@ -132,7 +132,7 @@ const updatePokemonErrorAction = (error) => ({
   payload: error
 });
 
-export const updatePokemon = (pokemon) => {
+const updatePokemon = (pokemon) => {
   return (async (dispatch) => {
     dispatch(updatePokemonAction());
     try {
@@ -157,6 +157,16 @@ export const updatePokemon = (pokemon) => {
       setTimeout(() => {
         dispatch(updatePokemonErrorAction({}));
       }, 5000);
+    }
+  });
+};
+
+export const submitPokemonsForm = (pokemon) => {
+  return (async (dispatch) => {
+    if (pokemon._id === undefined) {
+      await dispatch(createPokemon(pokemon));
+    } else {
+      await dispatch(updatePokemon(pokemon));
     }
   });
 };
