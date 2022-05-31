@@ -14,7 +14,7 @@ import {
   UPDATE_POKEMON,
   UPDATE_POKEMON_ERROR,
   UPDATE_POKEMON_SUCCESS
-} from "../types/indexTypes";
+} from "../types/pokemonsTypes";
 
 const initialState = {
   loading: false,
