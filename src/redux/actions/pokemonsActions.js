@@ -2,6 +2,19 @@ import axiosInstance from "../../config/axiosInstance";
 import { showToast } from "../../utils/sweetalert";
 import { CREATE_POKEMON, CREATE_POKEMON_ERROR, CREATE_POKEMON_SUCCESS, DELETE_POKEMON, DELETE_POKEMON_ERROR, DELETE_POKEMON_SUCCESS, READ_POKEMON, READ_POKEMONS, READ_POKEMONS_ERROR, READ_POKEMONS_SUCCESS, READ_POKEMON_ERROR, READ_POKEMON_SUCCESS, UPDATE_POKEMON, UPDATE_POKEMON_ERROR, UPDATE_POKEMON_SUCCESS } from "../types/indexTypes";
 
+let alertTimeId = 0;
+
+const showError = (error, pokemonErrorAction) => {
+  return (async (dispatch) => {
+    clearTimeout(alertTimeId);
+    showToast('error', 'Error');
+    dispatch(pokemonErrorAction(error));
+    alertTimeId = setTimeout(() => {
+      dispatch(pokemonErrorAction({}));
+    }, 5000);
+  });
+};
+
 const createPokemonAction = () => ({
   type: CREATE_POKEMON,
   payload: true
@@ -37,11 +50,7 @@ const createPokemon = (pokemon) => {
       dispatch(createPokemonSuccessAction(data));
       showToast('success', 'Creado');
     } catch (error) {
-      showToast('error', 'Error');
-      dispatch(createPokemonErrorAction(error));
-      setTimeout(() => {
-        dispatch(createPokemonErrorAction({}));
-      }, 5000);
+      dispatch(showError(error, createPokemonErrorAction));
     }
   });
 };
@@ -72,11 +81,7 @@ export const readPokemons = () => {
       const { data } = await axiosInstance(options);
       dispatch(readPokemonsSuccessAction(data));
     } catch (error) {
-      showToast('error', 'Error');
-      dispatch(readPokemonsErrorAction(error));
-      setTimeout(() => {
-        dispatch(readPokemonsErrorAction({}));
-      }, 5000);
+      dispatch(showError(error, readPokemonsErrorAction));
     }
   });
 };
@@ -108,11 +113,7 @@ export const readPokemon = (_id) => {
       dispatch(readPokemonSuccessAction(data));
       showToast('info', 'Leído');
     } catch (error) {
-      showToast('error', 'Error');
-      dispatch(readPokemonErrorAction(error));
-      setTimeout(() => {
-        dispatch(readPokemonErrorAction({}));
-      }, 5000);
+      dispatch(showError(error, readPokemonErrorAction));
     }
   });
 };
@@ -152,11 +153,7 @@ const updatePokemon = (pokemon) => {
       dispatch(updatePokemonSuccessAction(data));
       showToast('warning', 'Actualizado');
     } catch (error) {
-      showToast('error', 'Error');
-      dispatch(updatePokemonErrorAction(error));
-      setTimeout(() => {
-        dispatch(updatePokemonErrorAction({}));
-      }, 5000);
+      dispatch(showError(error, updatePokemonErrorAction));
     }
   });
 };
@@ -188,11 +185,7 @@ export const deletePokemon = (_id) => {
       dispatch(deletePokemonSuccessAction(_id));
       showToast('error', data.message);
     } catch (error) {
-      showToast('error', 'Error');
-      dispatch(deletePokemonErrorAction(error));
-      setTimeout(() => {
-        dispatch(deletePokemonErrorAction({}));
-      }, 5000);
+      dispatch(showError(error, deletePokemonErrorAction));
     }
   });
 };
