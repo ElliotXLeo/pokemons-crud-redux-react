@@ -3,7 +3,7 @@ import PokemonsCard from "../../components/pokemons/PokemonsCard";
 
 const PokemonsRead = () => {
 
-  const { pokemons } = useSelector(state => state);
+  const { pokemons } = useSelector(state => state.pokemonsReducers);
 
   return (
     <section className="py-8">

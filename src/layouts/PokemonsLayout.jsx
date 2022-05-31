@@ -10,7 +10,7 @@ const PokemonsLayout = () => {
 
   const applicationName = "PokémonsCRUD";
 
-  const { loading, error } = useSelector(state => state);
+  const { loading, error } = useSelector(state => state.pokemonsReducers);
   const dispatch = useDispatch();
 
   useEffect(() => {
