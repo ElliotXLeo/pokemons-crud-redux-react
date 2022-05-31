@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import PokemonsCard from "../../components/pokemons/PokemonsCard";
+import Alert from "../../components/sections/Alert";
 
 const PokemonsRead = () => {
 
-  const { pokemons } = useSelector(state => state.pokemonsReducers);
+  const { pokemonsReducers, alertsReducers } = useSelector(state => state);
+  const { pokemons } = pokemonsReducers;
+  const { alert } = alertsReducers;
 
   return (
     <section className="py-8">
@@ -49,6 +52,7 @@ const PokemonsRead = () => {
             )
           }
         </div>
+        {alert.message && <Alert alert={alert} />}
       </div>
     </section>
   );

@@ -25,7 +25,7 @@ const PokemonsLayout = () => {
         applicationName={applicationName}
       />
       <main className="pt-16 pb-8">
-        {error.message && <Alert error={error} />}
+        {error.message && <Alert alert={error} />}
         <Outlet />
       </main>
       <footer className="mt-auto text-center">

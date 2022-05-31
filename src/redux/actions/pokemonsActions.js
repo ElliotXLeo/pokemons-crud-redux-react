@@ -17,6 +17,7 @@ import {
   UPDATE_POKEMON_ERROR,
   UPDATE_POKEMON_SUCCESS
 } from "../types/pokemonsTypes";
+import { showAlert } from "./alertsActions";
 
 let alertTimeId = 0;
 
@@ -96,6 +97,10 @@ export const readPokemons = () => {
       };
       const { data } = await axiosInstance(options);
       dispatch(readPokemonsSuccessAction(data));
+      dispatch(showAlert({
+        name: "Pokémons",
+        message: "Pokémons leídos"
+      }));
     } catch (error) {
       dispatch(showError(error, readPokemonsErrorAction));
     }
