@@ -2,16 +2,22 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Alert from "../components/sections/Alert";
+import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import Loader from "../components/sections/Loader";
 import { readPokemons } from "../redux/actions/pokemonsActions";
 
 const PokemonsLayout = () => {
 
-  const applicationName = "PokémonsCRUD";
-
   const { loading, error } = useSelector(state => state.pokemonsReducers);
   const dispatch = useDispatch();
+
+  const applicationName = "PokémonsCRUD";
+
+  const credits = {
+    year: new Date().getFullYear(),
+    author: 'ELGS'
+  };
 
   useEffect(() => {
     dispatch(readPokemons());
@@ -28,9 +34,9 @@ const PokemonsLayout = () => {
         {error.message && <Alert alert={error} />}
         <Outlet />
       </main>
-      <footer className="mt-auto text-center">
-        ELGS
-      </footer>
+      <Footer
+        credits={credits}
+      />
     </>
   );
 };
