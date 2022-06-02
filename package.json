@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
-    "@sweetalert2/theme-dark": "^5.0.11",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "react": "^18.1.0",
