@@ -16,7 +16,7 @@ export default store;
 // import pokemonsReducers from "./reducers/pokemonsReducers";
 
 // const rootReducer = combineReducers({
-//   pokemonsReducers,
+//   pokemons: pokemonsReducers,
 //   alertsReducers
 // });
 

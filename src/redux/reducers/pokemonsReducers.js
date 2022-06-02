@@ -1,7 +1,4 @@
 import {
-  CREATE_POKEMON,
-  CREATE_POKEMON_ERROR,
-  CREATE_POKEMON_SUCCESS,
   DELETE_POKEMON,
   DELETE_POKEMON_ERROR,
   DELETE_POKEMON_SUCCESS,
@@ -26,24 +23,6 @@ const initialState = {
 const pokemonsReducers = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case CREATE_POKEMON:
-      return {
-        ...state,
-        loading: payload
-      };
-    case CREATE_POKEMON_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: {},
-        pokemons: [...state.pokemons, payload]
-      };
-    case CREATE_POKEMON_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: payload
-      };
     case READ_POKEMONS:
       return {
         ...state,

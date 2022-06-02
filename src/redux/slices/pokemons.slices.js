@@ -58,7 +58,7 @@ const showError = (error, pokemonErrorAction) => {
 
 export const fetchCreatePokemon = (pokemon) => {
   return (async (dispatch) => {
-    dispatch(fetchCreatePokemonRequest());
+    dispatch(fetchCreatePokemonRequest(true));
     try {
       const form = new FormData();
       for (const key in pokemon) {
