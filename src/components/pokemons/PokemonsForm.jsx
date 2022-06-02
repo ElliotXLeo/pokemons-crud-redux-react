@@ -1,15 +1,16 @@
 import * as yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from 'react-redux';
-import { submitPokemonsForm } from '../../redux/actions/pokemonsActions';
+// import { submitPokemonsForm } from '../../redux/actions/pokemonsActions';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { fetchCreatePokemon } from '../../redux/slices/pokemons.slices';
 
 const PokemonsForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { pokemon } = useSelector(state => state.pokemonsReducers);
+  const { pokemon } = useSelector(state => state.pokemons);
   const dispatch = useDispatch();
 
   const [formPokemon, setFormPokemon] = useState({
@@ -39,7 +40,8 @@ const PokemonsForm = () => {
         special: yup.string().required('El especial es requerido')
       })}
       onSubmit={async (values, actions) => {
-        await dispatch(submitPokemonsForm(values));
+        // await dispatch(submitPokemonsForm(values));
+        await dispatch(fetchCreatePokemon(values));
         actions.setSubmitting(false);
         actions.resetForm();
         navigate('/pokemons');

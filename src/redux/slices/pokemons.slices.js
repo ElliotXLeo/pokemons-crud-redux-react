@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axiosInstance from "../../config/axiosInstance";
+import axiosInstance from "../../configs/axiosInstance";
 import { showToast } from "../../utils/sweetalert";
 
 const initialState = {
@@ -37,7 +37,7 @@ const pokemonsSlices = createSlice({
   }
 });
 
-export const {
+const {
   fetchCreatePokemonRequest,
   fetchCreatePokemonSuccess,
   fetchCreatePokemonError

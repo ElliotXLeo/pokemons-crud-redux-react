@@ -1,4 +1,4 @@
-import axiosInstance from "../../config/axiosInstance";
+import axiosInstance from "../../configs/axiosInstance";
 import { showToast } from "../../utils/sweetalert";
 import {
   CREATE_POKEMON,
