@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../../configs/axiosInstance";
+import { showError } from "../../utils/myAlert";
 import { showToast } from "../../utils/sweetalert";
 
 const initialState = {
@@ -42,19 +43,6 @@ const {
   fetchCreatePokemonSuccess,
   fetchCreatePokemonError
 } = pokemonsSlices.actions;
-
-let alertTimeId = 0;
-
-const showError = (error, pokemonErrorAction) => {
-  return (async (dispatch) => {
-    clearTimeout(alertTimeId);
-    showToast('error', 'Error');
-    dispatch(pokemonErrorAction(error));
-    alertTimeId = setTimeout(() => {
-      dispatch(pokemonErrorAction({}));
-    }, 5000);
-  });
-};
 
 export const fetchCreatePokemon = (pokemon) => {
   return (async (dispatch) => {
