@@ -5,16 +5,12 @@ import {
   DELETE_POKEMON_ERROR,
   DELETE_POKEMON_SUCCESS,
   READ_POKEMON,
-  READ_POKEMONS,
-  READ_POKEMONS_ERROR,
-  READ_POKEMONS_SUCCESS,
   READ_POKEMON_ERROR,
   READ_POKEMON_SUCCESS,
   UPDATE_POKEMON,
   UPDATE_POKEMON_ERROR,
   UPDATE_POKEMON_SUCCESS
 } from "../types/pokemonsTypes";
-import { showAlert } from "./alertsActions";
 
 let alertTimeId = 0;
 
@@ -26,41 +22,6 @@ const showError = (error, pokemonErrorAction) => {
     alertTimeId = setTimeout(() => {
       dispatch(pokemonErrorAction({}));
     }, 5000);
-  });
-};
-
-const readPokemonsAction = () => ({
-  type: READ_POKEMONS,
-  payload: true
-});
-
-const readPokemonsSuccessAction = (pokemons) => ({
-  type: READ_POKEMONS_SUCCESS,
-  payload: pokemons
-});
-
-const readPokemonsErrorAction = (error) => ({
-  type: READ_POKEMONS_ERROR,
-  payload: error
-});
-
-export const readPokemons = () => {
-  return (async (dispatch) => {
-    dispatch(readPokemonsAction());
-    try {
-      const options = {
-        method: 'GET',
-        url: `/pokemons`
-      };
-      const { data } = await axiosInstance(options);
-      dispatch(readPokemonsSuccessAction(data));
-      dispatch(showAlert({
-        name: "Pokémons",
-        message: "Pokémons leídos"
-      }));
-    } catch (error) {
-      dispatch(showError(error, readPokemonsErrorAction));
-    }
   });
 };
 

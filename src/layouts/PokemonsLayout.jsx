@@ -1,17 +1,16 @@
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Alert from "../components/sections/Alert";
 import Footer from "../components/sections/Footer";
 import Header from "../components/sections/Header";
 import Loader from "../components/sections/Loader";
-// import { readPokemons } from "../redux/actions/pokemonsActions";
+import { fetchReadPokemons } from "../redux/slices/pokemons.slices";
 
 const PokemonsLayout = () => {
 
   const { loading, error } = useSelector(state => state.pokemons);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const applicationName = "PokémonsCRUD";
 
@@ -20,10 +19,10 @@ const PokemonsLayout = () => {
     author: 'ELGS'
   };
 
-  // useEffect(() => {
-  //   dispatch(readPokemons());
-  //   // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchReadPokemons());
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>

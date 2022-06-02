@@ -3,9 +3,6 @@ import {
   DELETE_POKEMON_ERROR,
   DELETE_POKEMON_SUCCESS,
   READ_POKEMON,
-  READ_POKEMONS,
-  READ_POKEMONS_ERROR,
-  READ_POKEMONS_SUCCESS,
   READ_POKEMON_ERROR,
   READ_POKEMON_SUCCESS,
   UPDATE_POKEMON,
@@ -23,24 +20,6 @@ const initialState = {
 const pokemonsReducers = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case READ_POKEMONS:
-      return {
-        ...state,
-        loading: payload
-      };
-    case READ_POKEMONS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: {},
-        pokemons: payload
-      };
-    case READ_POKEMONS_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: payload
-      };
     case READ_POKEMON:
       return {
         ...state,
