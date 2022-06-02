@@ -1,11 +1,11 @@
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-// import { deletePokemon } from "../../redux/actions/pokemonsActions";
+import { fetchDeletePokemon } from "../../redux/slices/pokemons.slices";
 
 const PokemonsCard = ({ pokemon }) => {
   const { _id, name, type, hp, attack, special, image } = pokemon;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -21,7 +21,7 @@ const PokemonsCard = ({ pokemon }) => {
       timer: 5000
     }).then((result) => {
       if (result.isConfirmed) {
-        // dispatch(deletePokemon(_id));
+        dispatch(fetchDeletePokemon(_id));
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelado',

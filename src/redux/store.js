@@ -13,10 +13,8 @@ export default store;
 // import { composeWithDevTools } from "redux-devtools-extension";
 // import thunk from "redux-thunk";
 // import alertsReducers from "./reducers/alertsReducers";
-// import pokemonsReducers from "./reducers/pokemonsReducers";
 
 // const rootReducer = combineReducers({
-//   pokemons: pokemonsReducers,
 //   alertsReducers
 // });
 
