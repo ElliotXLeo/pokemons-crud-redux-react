@@ -12,8 +12,10 @@ const PokemonsCard = ({ pokemon }) => {
       title: '¿Está seguro?',
       text: "¡No podrás revertir esto!",
       icon: 'warning',
+      background: '#20232a',
+      color: '#fff',
       showCancelButton: true,
-      confirmButtonColor: '#61dafb',
+      confirmButtonColor: '#61dafb80',
       cancelButtonColor: '#dc143c',
       confirmButtonText: '¡Sí, elimínalo!',
       cancelButtonText: '¡No, cancélalo!',
@@ -24,9 +26,15 @@ const PokemonsCard = ({ pokemon }) => {
         dispatch(fetchDeletePokemon(_id));
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
-          'Cancelado',
-          'Tu registro está seguro',
-          'error'
+          {
+            title: 'Cancelado',
+            text: 'Tu registro está seguro',
+            icon: 'error',
+            background: '#20232a',
+            color: '#fff',
+            confirmButtonColor: '#61dafb80',
+            confirmButtonText: 'Cerrar',
+          }
         );
       }
     });
