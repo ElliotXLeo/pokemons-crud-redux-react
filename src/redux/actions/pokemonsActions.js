@@ -4,9 +4,6 @@ import {
   DELETE_POKEMON,
   DELETE_POKEMON_ERROR,
   DELETE_POKEMON_SUCCESS,
-  READ_POKEMON,
-  READ_POKEMON_ERROR,
-  READ_POKEMON_SUCCESS,
   UPDATE_POKEMON,
   UPDATE_POKEMON_ERROR,
   UPDATE_POKEMON_SUCCESS
@@ -22,38 +19,6 @@ const showError = (error, pokemonErrorAction) => {
     alertTimeId = setTimeout(() => {
       dispatch(pokemonErrorAction({}));
     }, 5000);
-  });
-};
-
-const readPokemonAction = () => ({
-  type: READ_POKEMON,
-  payload: true
-});
-
-const readPokemonSuccessAction = (pokemon) => ({
-  type: READ_POKEMON_SUCCESS,
-  payload: pokemon
-});
-
-const readPokemonErrorAction = (error) => ({
-  type: READ_POKEMON_ERROR,
-  payload: error
-});
-
-export const readPokemon = (_id) => {
-  return (async (dispatch) => {
-    dispatch(readPokemonAction());
-    try {
-      const options = {
-        method: 'GET',
-        url: `/pokemons/${_id}`
-      };
-      const { data } = await axiosInstance(options);
-      dispatch(readPokemonSuccessAction(data));
-      showToast('info', 'Leído');
-    } catch (error) {
-      dispatch(showError(error, readPokemonErrorAction));
-    }
   });
 };
 
