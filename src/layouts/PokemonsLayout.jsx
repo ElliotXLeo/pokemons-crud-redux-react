@@ -8,16 +8,15 @@ import Loader from "../components/sections/Loader";
 import { fetchReadPokemons } from "../redux/slices/pokemons.slices";
 
 const PokemonsLayout = () => {
-
-  const { loading, error } = useSelector(state => state.pokemons);
-  const dispatch = useDispatch();
-
   const applicationName = "PokémonsCRUD";
 
   const credits = {
     year: new Date().getFullYear(),
     author: 'ELGS'
   };
+
+  const { loading, error } = useSelector(state => state.pokemons);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchReadPokemons());
@@ -27,11 +26,11 @@ const PokemonsLayout = () => {
   return (
     <>
       {loading && <Loader />}
+      {error.message && <Alert alert={error} />}
       <Header
         applicationName={applicationName}
       />
       <main className="pt-16 pb-8">
-        {error.message && <Alert alert={error} />}
         <Outlet />
       </main>
       <Footer

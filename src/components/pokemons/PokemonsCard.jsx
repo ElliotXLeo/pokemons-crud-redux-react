@@ -5,6 +5,7 @@ import { fetchDeletePokemon } from "../../redux/slices/pokemons.slices";
 
 const PokemonsCard = ({ pokemon }) => {
   const { _id, name, type, hp, attack, special, image } = pokemon;
+  
   const dispatch = useDispatch();
 
   const handleDelete = (_id) => {

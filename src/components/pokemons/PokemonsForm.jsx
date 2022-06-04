@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -52,23 +52,23 @@ const PokemonsForm = () => {
             className="flex flex-col gap-4 bg-zinc-700 rounded-md w-4/5 max-w-sm mx-auto p-4"
           >
             <div className="flex flex-col gap-1">
-              <Field name="name" type="text" placeholder="Nombre" className="bg-zinc-800 rounded p-2" />
+              <Field name="name" type="text" placeholder="Nombre" className="bg-zinc-800 rounded p-2" required />
               <ErrorMessage name="name" component="span" className="text-rose-500 text-sm text-center" />
             </div>
             <div className="flex flex-col gap-1">
-              <Field name="type" type="text" placeholder="Tipo" className="bg-zinc-800 rounded p-2" />
+              <Field name="type" type="text" placeholder="Tipo" className="bg-zinc-800 rounded p-2" required />
               <ErrorMessage name="type" component="span" className="text-rose-500 text-sm text-center" />
             </div>
             <div className="flex flex-col gap-1">
-              <Field name="hp" type="number" placeholder="Hp" className="bg-zinc-800 rounded p-2" />
+              <Field name="hp" type="number" placeholder="Hp" className="bg-zinc-800 rounded p-2" required />
               <ErrorMessage name="hp" component="span" className="text-rose-500 text-sm text-center" />
             </div>
             <div className="flex flex-col gap-1">
-              <Field name="attack" type="text" placeholder="Ataque" className="bg-zinc-800 rounded p-2" />
+              <Field name="attack" type="text" placeholder="Ataque" className="bg-zinc-800 rounded p-2" required />
               <ErrorMessage name="attack" component="span" className="text-rose-500 text-sm text-center" />
             </div>
             <div className="flex flex-col gap-1">
-              <Field name="special" type="text" placeholder="Especial" className="bg-zinc-800 rounded p-2" />
+              <Field name="special" type="text" placeholder="Especial" className="bg-zinc-800 rounded p-2" required />
               <ErrorMessage name="special" component="span" className="text-rose-500 text-sm text-center" />
             </div>
             <input

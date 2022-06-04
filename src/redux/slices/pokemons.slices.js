@@ -90,7 +90,7 @@ const pokemonsSlices = createSlice({
         loading: false,
         error: {},
         pokemon: {},
-        pokemons: state.pokemons.map((pokemon) => pokemon._id === action.payload._id ? action.payload : pokemon)
+        pokemons: state.pokemons.map(pokemon => pokemon._id === action.payload._id ? action.payload : pokemon)
       };
     },
     fetchUpdatePokemonError(state, action) {

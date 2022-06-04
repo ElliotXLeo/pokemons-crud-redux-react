@@ -3,7 +3,6 @@ import PokemonsCard from "../../components/pokemons/PokemonsCard";
 import Alert from "../../components/sections/Alert";
 
 const PokemonsRead = () => {
-
   const { pokemons } = useSelector(state => state.pokemons);
   const { alert } = useSelector(state => state.alerts);
 
@@ -11,7 +10,7 @@ const PokemonsRead = () => {
     <section className="py-8">
       <div className="flex flex-col gap-8 container mx-auto px-8 md:px-4">
         {alert.message && <Alert alert={alert} />}
-        <h2 className="text-yellow-400 text-3xl text-center font-bold">{pokemons.length ? `Pokémons (${pokemons.length})` : "No hay Pokémons registrados"}</h2>
+        <h2 className="text-yellow-400 text-3xl text-center font-bold">{pokemons.length ? `Pokémons (${pokemons.length})` : 'No hay Pokémons registrados'}</h2>
         <div className="grid justify-items-center gap-8 md:grid-cols-3">
           {
             pokemons.length ? (
@@ -22,8 +21,7 @@ const PokemonsRead = () => {
                     pokemon={pokemon}
                   />
                 );
-              }
-              )
+              })
             ) : (
               <div
                 className="flex flex-col items-center gap-4 bg-zinc-700 rounded-lg shadow shadow-cyan-300 transition-colors w-full max-w-xs p-4 hover:shadow-yellow-400"
@@ -55,6 +53,6 @@ const PokemonsRead = () => {
       </div>
     </section>
   );
-}
+};
 
 export default PokemonsRead;
